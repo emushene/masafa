@@ -9,14 +9,14 @@ body {
 	font-family: 'Work Sans', sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Oleo Script Swash Caps', cursive;
+	font-family: 'Notable', sans-serif;
 }
 a {
 	outline: none !important;
 }
 /*-----Header & Banner Starts-------*/
 .navbar-brand {
-	font-family: 'Oleo Script Swash Caps', cursive;
+	font-family: 'Notable';
 	color: #ffffff;
 	font-size: 26px;
 }
@@ -31,8 +31,8 @@ a {
 }
 .banner {
 	background-attachment: fixed;
-	background-color: #645862;
-	background-image: url(images/background.jpg);
+	background-color: #534852;
+	background-image: url(images/background.gif);
 	background-position: top center;
 	background-repeat: no-repeat;
 	background-size: cover;
