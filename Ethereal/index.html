@@ -109,7 +109,7 @@
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="feature-box media pull-left">
-          <div class="icon-box text-center pull-left media-object"> <i class="fa fa-warning" style="font-size:32px;color:red"></i> </div>
+          <div class="icon-box text-center pull-left media-object"> <i class="fa fa-warning" style="font-size:32px; color:red"></i> </div>
           <div class="feature-text media-body">
             <h4>Special  Cargo & Dangerous Goods</h4>
             <p class="feature-detail"> 
@@ -146,7 +146,50 @@
           </div>
         </div>
         <!-- /.row (nested) --> 
-        <a href="#" class="view-more">View More Items</a> </div>
+        <button class="view-more" id="myBtn">Disclaimer & Terms of Service</button>
+       <!-- Relax My Friend- <a href="#" class="view-more">Disclaimer & Terms of Service</a> -->
+       <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p><strong>Disclaimer and Terms of Service</strong>
+            
+            <li>All Goods <strong>MUST</strong> be accompanied by Invoices & Packing list</li>
+            <li>All Goods are declared as per Invoices at points of entry</li>
+            <li>All Restricted goods must be accompanied by the necessary Permits</li>
+            <li>All Goods must meet the set quality by the Bureau of Standards from Country of origin</li>
+            <li>SGS inspection should be arranged for bulk Transport of Goods by the Importer</li>
+            <li>Masafa Logistics has the right to open up all Goods should there be any doubt on consignment</li>
+            <li>Masafa Logistics cannot be held accountable for damaged Goods that had not been packed properly by ourselves or by the client incase of any damage</li>
+            <li>Masafa Logistics has the right to choose the packing agent for household Goods or any other Furniture during relocation</li>
+            <li>Un-collected Goods for <strong>Three (3)Months shall be SOLD </strong> without contacting the owner to recover the costs of transport</li>
+            <li>Masafa Logistics Insurance only covers Goods in Transit</li>
+            <li>Masafa Logistics shall not under any circumstances be held liable for Goods being held by customs officials</li>
+            <li>Offloads and pick ups are only permitted at points of departure and point of entry. Offloads and pick ups are not permitted for Goods in transit</li>
+            <li>Customs Officials have the right to inspect all consignments at the Border Points</li>
+            <li>All Goods remain at the care of Customs until they have been cleared and released. Masafa Logistics shall not be held responsible for any Border delays</li>
+            <li>Masafa Logistics will not be liable in any way for Goods Transported under false pretense</li>
+            <li>Once the Goods are in our warehouses they remain in our possession until they have been Transported to their destination</li>
+            <li>No Person will be allowed to collect Goods from our warehouses on behalf any other Transporters operating within our routes of operation</li>
+            <li>All Transported Goods are to be collected within (7) days after arrival at our warehouses, storage charges shall accrue for Goods not collected within that period</li>
+            <li>Masafa Logistics has no powers to overrule Customs or Bureau of Standards regulations
+            <li>Masafa Logistics only facilitates the movement of Goods, Payment of Duties, Inspections and Payment of Taxes at Points of entry</li>
+            <li>Masafa Logistics Officials or its Employees will not in any case be involved with procurements</li>
+            <li>Masafa Logistics Officials and Employees are not allowed to collude with clients to ship Goods or lend Services without Company's knowledge</li>
+            <li>All Goods shall remain in our custody until all fees for our services are paid in full. Goods not paid for within the stipulated period will be sold to recover transport and storage costs</li>
+            <li>Masafa Logistics does not Transport any Goods that are <strong>Prohibited or Restricted</strong> in their Countries of destination
+            <li>Masafa Logistics does not Transport; Human Body parts or Organs, Animal remains, Bank Notes or Coins, Precious Stones or any kind of Precious Jewelry, Ivory or Animal Organs of endangered species, Drugs, Explosives or Flammable substances and Compressed Gases</li>
+            <li>Masafa Logistics does not Transport Seeds that are not accompanied by Permits from the Cereals Board</li>
+            <li>All clients/customers shall be required to liaise with management through our official communication channels in case of any issue arising and shall not under any circumstances raise any issue through Social Media or any other Public forum</li>
+             
+             
+            
+        </div>
+      
+      </div>
+    
+    </div>
       <!-- /.col-lg-10 --> 
     </div>
     <!-- /.row --> 
@@ -245,18 +288,19 @@
       </div>
       <div class="col-md-7 col-sm-offset-0 col-sm-6 col-xs-offset-1 col-xs-10">
         <div class="contact-form">
+            <h4 class="sent-notification"></h4>>
           <form role="form">
             <div class="col-md-6">
-              <input type="text" class="form-control" id="name" placeholder="Name">
+              <input type="text" class="form-control" id="emailername" placeholder="Name">
             </div>
             <div class="col-md-6">
-              <input type="email" class="form-control" id="email" placeholder="Email">
+              <input type="email" class="form-control" id="emaileremail" placeholder="Email">
             </div>
             <div class="col-md-12">
-              <textarea class="form-control" placeholder="Message" rows="6"></textarea>
+              <textarea id="emailermessage" class="form-control" placeholder="Type in your Cargo Description to request Quotation" rows="6"></textarea>
             </div>
             <div class="col-md-12 text-center">
-              <button type="submit" class="contact-button">Request Quote</button>
+              <button type="button" onclick="sendEmail()" value="Request Quote" class="contact-button">Request Quote</button>
             </div>
           </form>
         </div>
@@ -316,6 +360,7 @@
 <script type="text/javascript" src="js/owl.carousel.min.js"></script> 
 <script type="text/javascript" src="js/jquery.countTo.js"></script> 
 <script type="text/javascript" src="js/jquery.waypoints.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function() {
      
@@ -382,6 +427,61 @@ $(document).ready(function() {
     });
   });
 })
+function sendEmail(){
+    var emailername = $("#emailername");
+    var emaileremail = $("#emailereail");
+    var emailermessage = $("#emailermessage");
+    var subject = $("");
+
+    if(isNotEmpty(emailername) && isNotEmpty(emaileremail) && isNotEmpty(emailermessage)){
+        $.ajax({
+            url: 'sendEmail.php',
+            method: 'POST',
+            dataType: 'json',
+            data:{
+                emailername: emailername.val(),
+                emaileremail: emaileremail.val(),
+                emaileremail: emailermessage.val(),
+                subject: subject.val(),
+            }, success: function(response){
+                $('#contact')[0].reset();
+                $('.sent-notification').text("Quote request sent successfully to Masafa Logistics.");
+            }
+
+        })
+    }
+}
+function isNotEmpty(caller){
+    if(caller.val()==""){
+        caller.css('border', '1px solid #eb233c');
+        return false;
+    }
+    else {
+        caller.css('border', '');
+        return true;
+    }
+}
+
+/*-- Get the DISCLAIMER modal --> */
+var modal = document.getElementById("myModal");
+
+
+var btn = document.getElementById("myBtn"); /* Get the button that opens the modal */
+var span = document.getElementsByClassName("close")[0];
+
+/* -- When the user clicks the button, open the modal - close follows  -- */
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
+
 </body>
 </html>
