@@ -18,7 +18,7 @@ if (isset($_POST['emailername']) && isset($_POST['emaileremail'])) {
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
     $mail->Username = "e.mushene@gmail.com";
-    $mail->Password = 'G@tonye77';
+    $mail->Password = '';
     $mail->Port = 465;
     $mail->SMTPSecure = "ssl";
 
@@ -30,7 +30,7 @@ if (isset($_POST['emailername']) && isset($_POST['emaileremail'])) {
     $mail->Subject = ("$emailername From web Quote Request");
     $mail->Body = $emailermessage;
 
-    if ($mail-> send()) {
+    if ($mail->send()) {
         $status = "Quote Sent Successfully";
         $response = "Quote Sent Successfully";
     }
